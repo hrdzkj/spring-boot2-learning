@@ -7,8 +7,9 @@ import java.io.Serializable;
 /**
  * @author Levin
  * @since 2018/5/7 0007
+ * 明该类  为一个实体类，它默认对应数据库中的表名是t_user
  */
-@Entity(name = "t_user")
+@Entity(name = "t_user") 
 public class User implements Serializable {
 
     private static final long serialVersionUID = 8655851615465363473L;

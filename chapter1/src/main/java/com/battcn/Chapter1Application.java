@@ -17,13 +17,27 @@ import java.util.Arrays;
  * 其中 @RestController 等同于 （@Controller 与 @ResponseBody），用来返回json
  *
  * @author Levin
- * @Configuration 表示这个类中定义了Bean，会把这个类中bean加载到spring容器中
+ * @Configuration 用于定义配置类，被注解的类内部包含有一个或多个被@Bean注解的方法，这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，
+ *                并用于构建bean定义，初始化Spring容器。
  * @SpringBootApplication 继承自@Configuration，等同于@Configuration @EnableAutoConfiguration @ComponentScan
  * @ComponentScan默认扫描启动类的所在的包和子包下面所有的注解
  * 
- * @EnableAutoConfiguration springboot的注解 会在你开启某些功能的时候自动配置 
- *，这个注解告诉Spring Boot根据添加的jar依赖猜测你想如何配置Spring。由于spring-boot-starter-web
- * 添加了Tomcat和Spring MVC，所以auto-configuration将假定你正在开发一个web应用，并对Spring进行相应地设置。
+ * @EnableAutoConfiguration 
+ * @EnableAutoConfiguration主要是用来开启自动配置，是扫描jar包下配置了META-INF/spring.factories里面的类和针对当前包以及子包下的自定义组件的
+ * https://blog.csdn.net/kmhysoft/article/details/71056027
+ * 
+ * @ComponentScan注解就相当于 xml配置文件中的context:component-scan标签
+ * @ComponengScan是用来配置自定义组件的，可以指定base路径或BaseClass
+
+
+ * 
+ * @Configuration的一个使用场景：
+ * 1.）如果我们想开发一个jar把供其他人使用，那么我们就在自己工程的spring.factories中配置@@Configuration类，
+ * 这样只要其他人在他们项目的POM中加入了我们开发的jar包作为依赖，在他们项目启动的时候就会初始化我们开发的工程中的类。
+ * 2.）使用@Configuration注解来代替Spring的bean配置 https://www.cnblogs.com/hujingwei/p/5360944.html
+ * 
+ * 
+ * 
  */
 @RestController
 @SpringBootApplication
@@ -38,9 +52,10 @@ public class Chapter1Application {
         return "Hello battcn";
     }
 
+   
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        // 目的是
+        // CommandLineRunner接口实现在项目启动后执行的功能
         return args -> {
             System.out.println("来看看 SpringBoot 默认为我们提供的 Bean：");
             String[] beanNames = ctx.getBeanDefinitionNames();
