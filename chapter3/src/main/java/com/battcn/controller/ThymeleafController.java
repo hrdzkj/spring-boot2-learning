@@ -10,13 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author Levin
  * @since 2018/4/23 0023
+ * //@RequestMapping将 HTTP请求映射到 MVC和 REST控制器的处理方法上,既可以定义在类上，也可以定义方法上
  */
 @Controller
-@RequestMapping
+@RequestMapping 
 public class ThymeleafController {
 
     @GetMapping("/index")
     public ModelAndView index() {
+    
         ModelAndView view = new ModelAndView();
         // 设置跳转的视图 默认映射到 src/main/resources/templates/{viewName}.html
         view.setViewName("index");

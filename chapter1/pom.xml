@@ -38,6 +38,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- @Controller 用来响应页面，@Controller必须配合模版来使用spring-boot支持多种模版引擎,推荐使用Thymeleaf,
+		             应当避免使用JSP，不然会丧失很多springboot特性-->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
 	</dependencies>
 
 	<build>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author Levin
  * @since 2018/4/23 0023
+  * 定义我们的 PropertiesController,用来注入 MyProperties1 测试我们编写的代码
  */
 @RequestMapping("/properties")
 @RestController
