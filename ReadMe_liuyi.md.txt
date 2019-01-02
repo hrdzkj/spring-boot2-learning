@@ -23,7 +23,23 @@ controller,filter,listner
 注意：需要指定http头content-type=application/json  
 
 @RequestHeader请求头，比鉴权@RequestHeader("access_token")  
-@HttpServletRequest request自动注入获取参数  
+@HttpServletRequest request自动注入获取参数 
+
+
+http://try.redis.io redis命令测试工具
+
+定时任务：@EnableScheduling开始定时任务，自动扫描；
+          @Component被容器扫描
+          @Scheduled
+异步任务:@Component,@EnableAsync @Async 
+
+主流消息队列：RockketMQ,ActiveMQ
+用于跨平台、多语言、多项目解耦、分布式事务、RPC等
+
+日志：logback
+
+响应式编程：mono flux
+webflux基于功能和基于注解两种风格 
 
 
 
